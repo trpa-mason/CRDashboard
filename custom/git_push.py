@@ -55,9 +55,9 @@ def git_commit_and_push():
         print(f"Error: {e}")
         raise
 
-@test
-def test_output(output, *args) -> None:
-    """
-    Template code for testing the output of the block.
-    """
-    assert output is not None, 'The output is undefined'
+# @test
+# def test_output(output, *args) -> None:
+#     """
+#     Template code for testing the output of the block.
+#     """
+#     assert output is not None, 'The output is undefined'

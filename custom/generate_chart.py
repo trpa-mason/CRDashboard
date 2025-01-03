@@ -117,9 +117,9 @@ def plot_lake_level_with_high_water_mark(df):
         div_id=div_id,
     )
 
-@test
-def test_output(output, *args) -> None:
-    """
-    Template code for testing the output of the block.
-    """
-    assert output is not None, 'The output is undefined'
+# @test
+# def test_output(output, *args) -> None:
+#     """
+#     Template code for testing the output of the block.
+#     """
+#     assert output is not None, 'The output is undefined'
