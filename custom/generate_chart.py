@@ -32,7 +32,7 @@ def plot_lake_level_with_high_water_mark(df):
     color_sequence = ["#023f64"]
     sort = "dateTime"
     orders = None
-    x_title = "Date"
+    x_title = "TEST"
     y_title = "Water Level (feet)"
     hovertemplate = "%{y:,.0f} ft"
     format = ",.0f"
@@ -85,7 +85,7 @@ def plot_lake_level_with_high_water_mark(df):
     # Update layout of the plot
     fig.update_layout(
         margin=dict(t=20),
-        title="Lake Tahoe Water Level",
+        title="Lake Tahoe Water Level TEST",
         yaxis=dict(title=y_title),
         xaxis=dict(title=x_title, showgrid=False),
         hovermode=hovermode,
