@@ -1,5 +1,6 @@
 import os
 import subprocess
+import pathlib
 
 if 'custom' not in globals():
     from mage_ai.data_preparation.decorators import custom
@@ -7,11 +8,22 @@ if 'test' not in globals():
     from mage_ai.data_preparation.decorators import test
 
 # Set the path to your local repository (inside the container)
-# Assuming the repo is mounted at /home/src/ClimateResilienceDashboard inside the container
 REPO_DIR = '/home/src/ClimateResilienceDashboard'
+
+# Set the path to the mounted html folder (inside the container)
+html_path = pathlib.Path("/app/output")  # Path inside the container
 
 # Set the commit message
 COMMIT_MSG = 'Automated commit: Updated LakeLevel.html'
+
+# Function to check for changes in the html folder
+def check_for_changes():
+    # Run `git status` to check for changes in the repo
+    result = subprocess.run(['git', 'status', '--porcelain'], stdout=subprocess.PIPE)
+    changes = result.stdout.decode().strip()
+
+    # If there are changes (any output from `git status`)
+    return bool(changes)
 
 @custom
 def git_commit_and_push():
@@ -22,32 +34,26 @@ def git_commit_and_push():
         # Pull the latest changes from the remote (optional, useful if working in a shared repo)
         subprocess.check_call(['git', 'pull', 'mage-repo', 'mb_edits'])
 
-        # Stage all changes (including new HTML files, etc.)
-        subprocess.check_call(['git', 'add', '.'])
+        # Check if there are changes in the html directory
+        if check_for_changes():
+            print("Changes detected, preparing to commit and push...")
 
-        # Commit the changes with the provided commit message
-        subprocess.check_call(['git', 'commit', '-m', COMMIT_MSG])
+            # Stage all changes (including new HTML files, etc.)
+            subprocess.check_call(['git', 'add', '.'])
 
-        # Push the changes to the remote repository
-        subprocess.check_call(['git', 'push', 'mage-repo', 'mb_edits'])
+            # Commit the changes with the provided commit message
+            subprocess.check_call(['git', 'commit', '-m', COMMIT_MSG])
 
-        print("Changes committed and pushed successfully!")
+            # Push the changes to the remote repository
+            subprocess.check_call(['git', 'push', 'mage-repo', 'mb_edits'])
+
+            print("Changes committed and pushed successfully!")
+        else:
+            print("No changes detected in the html folder. Exiting without commit.")
+    
     except subprocess.CalledProcessError as e:
         print(f"Error: {e}")
         raise
-
-# def git_pull():
-#     git_username = os.getenv('GIT_USERNAME')
-#     git_token = os.getenv('GIT_TOKEN')
-
-#     # Set the remote URL with username and token for HTTPS authentication
-#     remote_url = f'https://{git_username}:{git_token}@github.com/your_repo.git'
-
-#     try:
-#         subprocess.check_call(['git', 'pull', remote_url, 'main'])
-#     except subprocess.CalledProcessError as e:
-#         print(f"Error pulling from Git: {e}")
-#         raise
 
 @test
 def test_output(output, *args) -> None:
