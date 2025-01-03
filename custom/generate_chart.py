@@ -7,7 +7,6 @@ import sys
 import pathlib
 
 from ClimateResilienceDashboard.utils import utils
-from ClimateResilienceDashboard.utils import NaturalSystems
 
 if 'custom' not in globals():
     from mage_ai.data_preparation.decorators import custom
