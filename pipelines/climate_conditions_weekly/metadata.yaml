@@ -19,8 +19,25 @@ blocks:
   upstream_blocks: []
   uuid: get_lake_level_data
 - all_upstream_blocks_executed: true
-  color: yellow
+  color: teal
   configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: generate chart
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - get_lake_level_data
+  uuid: generate_chart
+- all_upstream_blocks_executed: true
+  color: yellow
+  configuration:
+    dynamic: false
   downstream_blocks: []
   executor_config: null
   executor_type: local_python
@@ -33,37 +50,6 @@ blocks:
   type: custom
   upstream_blocks: []
   uuid: git_push
-- all_upstream_blocks_executed: true
-  color: teal
-  configuration: {}
-  downstream_blocks: []
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: generate chart
-  retry_config: null
-  status: updated
-  timeout: null
-  type: custom
-  upstream_blocks:
-  - get_lake_level_data
-  uuid: generate_chart
-- all_upstream_blocks_executed: true
-  color: yellow
-  configuration: {}
-  downstream_blocks: []
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: git check call
-  retry_config: null
-  status: failed
-  timeout: null
-  type: custom
-  upstream_blocks: []
-  uuid: git_check_call
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
