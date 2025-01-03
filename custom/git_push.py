@@ -20,7 +20,7 @@ def git_commit_and_push():
         os.chdir(REPO_DIR)
 
         # Pull the latest changes from the remote (optional, useful if working in a shared repo)
-        subprocess.check_call(['git', 'pull', 'CRDashboard', 'mb_edits'])
+        subprocess.check_call(['git', 'pull', 'mage-repo', 'mb_edits'])
 
         # Stage all changes (including new HTML files, etc.)
         subprocess.check_call(['git', 'add', '.'])
@@ -29,7 +29,7 @@ def git_commit_and_push():
         subprocess.check_call(['git', 'commit', '-m', COMMIT_MSG])
 
         # Push the changes to the remote repository
-        subprocess.check_call(['git', 'push', 'CRDashboard', 'mb_edits'])
+        subprocess.check_call(['git', 'push', 'mage-repo', 'mb_edits'])
 
         print("Changes committed and pushed successfully!")
     except subprocess.CalledProcessError as e:
