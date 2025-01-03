@@ -8,7 +8,7 @@ if 'test' not in globals():
     from mage_ai.data_preparation.decorators import test
 
 # Set the path to your local repository (inside the container)
-REPO_DIR = '/home/src/ClimateResilienceDashboard'
+REPO_DIR = '/home/src/CRDashboard'
 
 # Set the path to the mounted html folder (inside the container)
 html_path = pathlib.Path("/app/output")  # Path inside the container
@@ -32,7 +32,7 @@ def git_commit_and_push():
         os.chdir(REPO_DIR)
 
         # Pull the latest changes from the remote (optional, useful if working in a shared repo)
-        subprocess.check_call(['git', 'pull', 'mage-repo', 'mb_edits'])
+        subprocess.check_call(['git', 'pull', 'mage-repo-am', 'am-test'])
 
         # Check if there are changes in the html directory
         if check_for_changes():
@@ -45,7 +45,7 @@ def git_commit_and_push():
             subprocess.check_call(['git', 'commit', '-m', COMMIT_MSG])
 
             # Push the changes to the remote repository
-            subprocess.check_call(['git', 'push', 'mage-repo', 'mb_edits'])
+            subprocess.check_call(['git', 'push', 'mage-repo-am', 'am-test'])
 
             print("Changes committed and pushed successfully!")
         else:

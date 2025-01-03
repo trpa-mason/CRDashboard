@@ -72,5 +72,5 @@ spark_config: {}
 tags: []
 type: python
 uuid: climate_conditions_weekly
-variables_dir: /home/src/mage_data/ClimateResilienceDashboard
+variables_dir: /home/src/mage_data/CRDashboard
 widgets: []
