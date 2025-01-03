@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 import sys
 import pathlib
 
-from ClimateResilienceDashboard.utils import utils
+from CRDashboard.utils import utils
 
 if 'custom' not in globals():
     from mage_ai.data_preparation.decorators import custom
