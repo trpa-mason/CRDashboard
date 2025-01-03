@@ -20,7 +20,7 @@ def git_commit_and_push():
         os.chdir(REPO_DIR)
 
         # Pull the latest changes from the remote (optional, useful if working in a shared repo)
-        subprocess.check_call(['git', 'pull', 'origin', 'main'])
+        subprocess.check_call(['git', 'pull', 'CRDashboard', 'mb_edits'])
 
         # Stage all changes (including new HTML files, etc.)
         subprocess.check_call(['git', 'add', '.'])
@@ -29,25 +29,25 @@ def git_commit_and_push():
         subprocess.check_call(['git', 'commit', '-m', COMMIT_MSG])
 
         # Push the changes to the remote repository
-        subprocess.check_call(['git', 'push', 'origin', 'main'])
+        subprocess.check_call(['git', 'push', 'CRDashboard', 'mb_edits'])
 
         print("Changes committed and pushed successfully!")
     except subprocess.CalledProcessError as e:
         print(f"Error: {e}")
         raise
 
-def git_pull():
-    git_username = os.getenv('GIT_USERNAME')
-    git_token = os.getenv('GIT_TOKEN')
+# def git_pull():
+#     git_username = os.getenv('GIT_USERNAME')
+#     git_token = os.getenv('GIT_TOKEN')
 
-    # Set the remote URL with username and token for HTTPS authentication
-    remote_url = f'https://{git_username}:{git_token}@github.com/your_repo.git'
+#     # Set the remote URL with username and token for HTTPS authentication
+#     remote_url = f'https://{git_username}:{git_token}@github.com/your_repo.git'
 
-    try:
-        subprocess.check_call(['git', 'pull', remote_url, 'main'])
-    except subprocess.CalledProcessError as e:
-        print(f"Error pulling from Git: {e}")
-        raise
+#     try:
+#         subprocess.check_call(['git', 'pull', remote_url, 'main'])
+#     except subprocess.CalledProcessError as e:
+#         print(f"Error pulling from Git: {e}")
+#         raise
 
 @test
 def test_output(output, *args) -> None:
