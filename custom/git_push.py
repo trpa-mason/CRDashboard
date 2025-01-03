@@ -32,7 +32,7 @@ def git_commit_and_push():
         os.chdir(REPO_DIR)
 
         # Pull the latest changes from the remote (optional, useful if working in a shared repo)
-        subprocess.check_call(['git', 'pull', 'mage-repo-am', 'am-test'])
+        subprocess.check_call(['git', 'pull', 'mage-repo-am', 'am-edits'])
 
         # Check if there are changes in the html directory
         if check_for_changes():
@@ -45,7 +45,7 @@ def git_commit_and_push():
             subprocess.check_call(['git', 'commit', '-m', COMMIT_MSG])
 
             # Push the changes to the remote repository
-            subprocess.check_call(['git', 'push', 'mage-repo-am', 'am-test'])
+            subprocess.check_call(['git', 'push', 'mage-repo-am', 'am-edits'])
 
             print("Changes committed and pushed successfully!")
         else:
