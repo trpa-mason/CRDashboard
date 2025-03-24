@@ -1,0 +1,26 @@
+blocks: []
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2025-01-13 17:57:18.662425+00:00'
+data_integration: null
+description: Update lake temp data visualization weekly.
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: lake_temp_weekly
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags:
+- Lake Tahoe Water Temperature
+type: integration
+uuid: lake_temp_weekly
+variables_dir: /home/src/mage_data/ClimateResilienceDashboard
+widgets: []

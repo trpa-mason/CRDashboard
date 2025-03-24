@@ -54,10 +54,3 @@ def git_commit_and_push():
     except subprocess.CalledProcessError as e:
         print(f"Error: {e}")
         raise
-
-# @test
-# def test_output(output, *args) -> None:
-#     """
-#     Template code for testing the output of the block.
-#     """
-#     assert output is not None, 'The output is undefined'

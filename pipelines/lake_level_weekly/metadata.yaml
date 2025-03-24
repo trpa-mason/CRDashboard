@@ -56,12 +56,12 @@ concurrency_config: {}
 conditionals: []
 created_at: '2024-12-29 06:54:10.117527+00:00'
 data_integration: null
-description: Update Climate Conditions data visualizations weekly.
+description: Update lake level data visualization weekly.
 executor_config: {}
 executor_count: 1
 executor_type: null
 extensions: {}
-name: climate conditions weekly
+name: lake level weekly
 notification_config: {}
 remote_variables_dir: null
 retry_config: {}
@@ -71,6 +71,6 @@ settings:
 spark_config: {}
 tags: []
 type: python
-uuid: climate_conditions_weekly
+uuid: lake_level_weekly
 variables_dir: /home/src/mage_data/ClimateResilienceDashboard
 widgets: []
