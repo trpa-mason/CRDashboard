@@ -23,9 +23,20 @@ def get_data_lake_level():
     response = requests.get(url)
     data = response.json()
 
-    time_series_data = data["value"]["timeSeries"][0]["values"][1]["value"]
+    # Extract time series data
+    time_series = data['value']['timeSeries']
 
-    df = pd.DataFrame(time_series_data)
+    # Extract values and datetime
+    values = []
+    for series in time_series:
+        for value in series['values'][1]['value']:
+            values.append({
+                'dateTime': value['dateTime'],
+                'value': value['value']
+            })
+
+    # Convert to DataFrame
+    df = pd.DataFrame(values)
     df["dateTime"] = pd.to_datetime(df["dateTime"], utc=True)
     df["value"] = pd.to_numeric(df["value"])
     df["value"] = df["value"] + 6220
