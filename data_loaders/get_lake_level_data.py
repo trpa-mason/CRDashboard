@@ -23,7 +23,7 @@ def get_data_lake_level():
     response = requests.get(url)
     data = response.json()
 
-    time_series_data = data["value"]["timeSeries"][0]["values"][0]["value"]
+    time_series_data = data["value"]["timeSeries"][0]["values"][1]["value"]
 
     df = pd.DataFrame(time_series_data)
     df["dateTime"] = pd.to_datetime(df["dateTime"], utc=True)
