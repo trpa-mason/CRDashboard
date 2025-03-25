@@ -9,7 +9,7 @@ if 'test' not in globals():
 
 @data_loader
 def get_data_lake_level():
-    days = 6400
+    days = 6765
     site_number = 10337000
     # Calculate the start and end dates based on the selected time range
     end_date = datetime.now()
